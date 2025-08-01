@@ -29,7 +29,8 @@ function Contact() {
           Let's Work Together
         </h1>
         <p className='text-gray-400 text-center mb-12 text-lg'>
-          Got a project in mind? I'd love to hear about it and bring your vision to life.
+          Got a project in mind? I'd love to hear about it and bring your vision
+          to life.
         </p>
 
         {state.succeeded ? (
@@ -38,19 +39,26 @@ function Contact() {
             animate={{ opacity: 1, scale: 1 }}
             className='text-center p-8 bg-green-600/10 border border-green-600/20 rounded-xl'
           >
-            <h2 className='text-2xl font-bold text-green-400 mb-4'>Message Sent! 🎉</h2>
-            <p className='text-gray-300'>Thank you for reaching out. I'll get back to you soon!</p>
+            <h2 className='text-2xl font-bold text-green-400 mb-4'>
+              Message Sent! 🎉
+            </h2>
+            <p className='text-gray-300'>
+              Thank you for reaching out. I'll get back to you soon!
+            </p>
           </motion.div>
         ) : (
-          <motion.form 
-            className='space-y-6' 
+          <motion.form
+            className='space-y-6'
             onSubmit={handleSubmit}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div>
-              <label htmlFor='name' className='block mb-2 text-sm font-medium text-gray-300'>
+              <label
+                htmlFor='name'
+                className='block mb-2 text-sm font-medium text-gray-300'
+              >
                 Name *
               </label>
               <input
@@ -70,7 +78,10 @@ function Contact() {
             </div>
 
             <div>
-              <label htmlFor='email' className='block mb-2 text-sm font-medium text-gray-300'>
+              <label
+                htmlFor='email'
+                className='block mb-2 text-sm font-medium text-gray-300'
+              >
                 Email *
               </label>
               <input
@@ -90,7 +101,10 @@ function Contact() {
             </div>
 
             <div>
-              <label htmlFor='subject' className='block mb-2 text-sm font-medium text-gray-300'>
+              <label
+                htmlFor='subject'
+                className='block mb-2 text-sm font-medium text-gray-300'
+              >
                 Subject
               </label>
               <input
@@ -109,7 +123,10 @@ function Contact() {
             </div>
 
             <div>
-              <label htmlFor='message' className='block mb-2 text-sm font-medium text-gray-300'>
+              <label
+                htmlFor='message'
+                className='block mb-2 text-sm font-medium text-gray-300'
+              >
                 Message *
               </label>
               <textarea
@@ -140,7 +157,7 @@ function Contact() {
           </motion.form>
         )}
 
-        <motion.div 
+        <motion.div
           className='mt-16 text-center'
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

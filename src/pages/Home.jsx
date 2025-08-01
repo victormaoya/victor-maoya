@@ -6,13 +6,13 @@ const Home = () => (
   <main className='min-h-screen'>
     {/* Hero Section */}
     <section className='flex items-center justify-center min-h-screen px-8 relative'>
-      <motion.div 
+      <motion.div
         className='text-center max-w-4xl mx-auto'
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <motion.h1 
+        <motion.h1
           className='text-5xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent'
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -20,7 +20,7 @@ const Home = () => (
         >
           Victor Maoya
         </motion.h1>
-        <motion.p 
+        <motion.p
           className='text-xl md:text-2xl text-gray-300 mb-4'
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -28,16 +28,17 @@ const Home = () => (
         >
           Full-Stack Developer & Digital Craftsman
         </motion.p>
-        <motion.p 
+        <motion.p
           className='text-lg text-gray-400 mb-12 max-w-2xl mx-auto'
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          I build state-of-the-art websites with precision and aesthetic elegance.
-          Turning ideas into beautiful, functional digital experiences.
+          I build state-of-the-art websites with precision and aesthetic
+          elegance. Turning ideas into beautiful, functional digital
+          experiences.
         </motion.p>
-        <motion.div 
+        <motion.div
           className='flex flex-col sm:flex-row gap-4 justify-center items-center'
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -57,9 +58,9 @@ const Home = () => (
           </Link>
         </motion.div>
       </motion.div>
-      
+
       {/* Scroll indicator */}
-      <motion.div 
+      <motion.div
         className='absolute bottom-8 left-1/2 transform -translate-x-1/2'
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -71,16 +72,18 @@ const Home = () => (
 
     {/* Features Section */}
     <section className='py-20 px-8 bg-gray-900'>
-      <motion.div 
+      <motion.div
         className='max-w-6xl mx-auto'
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <h2 className='text-3xl md:text-4xl font-bold text-center mb-16'>What I Do</h2>
+        <h2 className='text-3xl md:text-4xl font-bold text-center mb-16'>
+          What I Do
+        </h2>
         <div className='grid md:grid-cols-3 gap-8'>
-          <motion.div 
+          <motion.div
             className='text-center p-6 rounded-xl bg-gray-800 border border-gray-700'
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
@@ -90,11 +93,12 @@ const Home = () => (
             </div>
             <h3 className='text-xl font-bold mb-3'>Frontend Development</h3>
             <p className='text-gray-400'>
-              Building responsive, interactive user interfaces with React, TypeScript, and modern CSS frameworks.
+              Building responsive, interactive user interfaces with React,
+              TypeScript, and modern CSS frameworks.
             </p>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             className='text-center p-6 rounded-xl bg-gray-800 border border-gray-700'
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
@@ -104,11 +108,12 @@ const Home = () => (
             </div>
             <h3 className='text-xl font-bold mb-3'>Backend Development</h3>
             <p className='text-gray-400'>
-              Creating robust APIs and server-side applications with Node.js, Express, and MongoDB.
+              Creating robust APIs and server-side applications with Node.js,
+              Express, and MongoDB.
             </p>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             className='text-center p-6 rounded-xl bg-gray-800 border border-gray-700'
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
@@ -118,7 +123,8 @@ const Home = () => (
             </div>
             <h3 className='text-xl font-bold mb-3'>UI/UX Design</h3>
             <p className='text-gray-400'>
-              Designing beautiful, intuitive user experiences with attention to detail and modern aesthetics.
+              Designing beautiful, intuitive user experiences with attention to
+              detail and modern aesthetics.
             </p>
           </motion.div>
         </div>

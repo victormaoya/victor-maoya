@@ -5,21 +5,28 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import Projects from './pages/Projects'
 import ThankYou from './pages/ThankYou'
+import NotFound from './pages/NotFound'
+import ErrorBoundary from './components/ErrorBoundary'
 
 function App() {
   return (
-    <div className='min-h-screen bg-gray-950 text-white'>
-      <Navbar />
-      <div className='pt-20'> {/* Add padding to account for fixed navbar */}
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/projects' element={<Projects />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/contact' element={<Contact />} />
-          <Route path='/thank-you' element={<ThankYou />} />
-        </Routes>
+    <ErrorBoundary>
+      <div className='min-h-screen bg-gray-950 text-white'>
+        <Navbar />
+        <div className='pt-20'>
+          {' '}
+          {/* Add padding to account for fixed navbar */}
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/projects' element={<Projects />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path='/thank-you' element={<ThankYou />} />
+            <Route path='*' element={<NotFound />} />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </ErrorBoundary>
   )
 }
 

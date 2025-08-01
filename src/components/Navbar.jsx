@@ -14,14 +14,17 @@ const Navbar = () => {
     { path: '/', label: 'Home' },
     { path: '/projects', label: 'Projects' },
     { path: '/about', label: 'About' },
-    { path: '/contact', label: 'Contact' }
+    { path: '/contact', label: 'Contact' },
   ]
 
   return (
     <header className='fixed top-0 left-0 right-0 z-50 bg-gray-950/90 backdrop-blur-sm border-b border-gray-800'>
       <div className='max-w-7xl mx-auto px-6 py-4 flex justify-between items-center'>
         {/* Logo */}
-        <Link to='/' className='flex items-center gap-3 hover:opacity-80 transition-opacity'>
+        <Link
+          to='/'
+          className='flex items-center gap-3 hover:opacity-80 transition-opacity'
+        >
           <img
             src={victorPic}
             alt='Victor Maoya'

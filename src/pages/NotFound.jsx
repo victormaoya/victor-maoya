@@ -1,29 +1,27 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { FaCheckCircle, FaHome, FaEnvelope } from 'react-icons/fa'
+import { FaHome, FaSearch } from 'react-icons/fa'
 
-const ThankYou = () => {
+const NotFound = () => {
   return (
-    <div className='min-h-screen flex items-center justify-center px-8'>
+    <div className='min-h-screen bg-gray-950 text-white flex items-center justify-center px-8'>
       <motion.div
         className='text-center max-w-md mx-auto'
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className='mb-8'
         >
-          <FaCheckCircle className='text-6xl text-green-500 mx-auto mb-6' />
-          <h1 className='text-4xl font-bold text-green-400 mb-4'>Thank You!</h1>
-          <p className='text-lg text-gray-300 mb-2'>
-            Your message has been sent successfully 🎉
-          </p>
-          <p className='text-gray-400'>
-            I'll get back to you as soon as possible.
+          <h1 className='text-9xl font-bold text-purple-500 mb-4'>404</h1>
+          <h2 className='text-3xl font-bold mb-4'>Page Not Found</h2>
+          <p className='text-gray-400 mb-8'>
+            Oops! The page you're looking for doesn't exist. It might have been
+            moved or deleted.
           </p>
         </motion.div>
 
@@ -41,17 +39,17 @@ const ThankYou = () => {
             Back to Home
           </Link>
 
-          <a
-            href='mailto:victormaoya@gmail.com'
+          <Link
+            to='/projects'
             className='flex items-center justify-center gap-2 border border-purple-600 hover:bg-purple-800 px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105'
           >
-            <FaEnvelope />
-            Send Another Message
-          </a>
+            <FaSearch />
+            View Projects
+          </Link>
         </motion.div>
       </motion.div>
     </div>
   )
 }
 
-export default ThankYou
+export default NotFound
