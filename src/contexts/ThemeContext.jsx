@@ -13,29 +13,30 @@ export const useTheme = () => {
 
 export function ThemeProvider({ children }) {
   const [isDark, setIsDark] = useState(() => {
-    // Initialize with dark mode and set document class immediately
-    document.documentElement.classList.add('dark')
-    return true
+    // Check if dark class is already set (from index.html script)
+    return document.documentElement.classList.contains('dark')
   })
 
   useEffect(() => {
-    // Check for saved theme preference, if none exists, default to dark mode
+    // Sync with what's already been set by the index.html script
     const savedTheme = localStorage.getItem('theme')
+    const currentIsDark = document.documentElement.classList.contains('dark')
 
     if (savedTheme) {
-      const isThemeDark = savedTheme === 'dark'
-      setIsDark(isThemeDark)
+      const shouldBeDark = savedTheme === 'dark'
+      setIsDark(shouldBeDark)
 
-      // Update document class based on saved preference
-      if (isThemeDark) {
+      // Ensure document class matches saved preference
+      if (shouldBeDark && !currentIsDark) {
         document.documentElement.classList.add('dark')
-      } else {
+      } else if (!shouldBeDark && currentIsDark) {
         document.documentElement.classList.remove('dark')
       }
     } else {
-      // If no saved preference, keep dark mode as default and save it
-      localStorage.setItem('theme', 'dark')
+      // Default to dark mode if no preference saved
+      setIsDark(true)
       document.documentElement.classList.add('dark')
+      localStorage.setItem('theme', 'dark')
     }
   }, [])
 

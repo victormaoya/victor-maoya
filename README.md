@@ -5,15 +5,18 @@ A modern, responsive portfolio website built with React, showcasing my projects 
 ## 🚀 Features
 
 - **Modern Design**: Clean, professional design with smooth animations
-- **Dual Theme Support**: Dark/Light mode toggle with system preference detection
+- **Dual Theme Support**: Dark/Light mode toggle with instant theme switching
+- **Dark Mode Default**: Loads in dark mode by default with zero flash
 - **Fully Responsive**: Optimized for all devices and screen sizes
 - **Interactive Elements**: Smooth animations using Framer Motion
 - **Contact Form**: Functional contact form integrated with Formspree
 - **Mobile Navigation**: Responsive hamburger menu for mobile devices
 - **Theme Persistence**: Theme preference saved in localStorage
+- **Error Handling**: Comprehensive error boundaries and 404 page with theme support
 - **Performance Optimized**: Fast loading with Vite build system
 - **Accessibility**: WCAG compliant with proper focus states and ARIA labels
 - **SEO Optimized**: Proper meta tags and semantic HTML structure
+- **Professional Footer**: Branded footer with theme-aware styling
 
 ## 🛠️ Tech Stack
 
@@ -79,6 +82,8 @@ portfolio/
 │   ├── assets/
 │   │   └── victor.jpg
 │   ├── components/
+│   │   ├── ErrorBoundary.jsx
+│   │   ├── Footer.jsx
 │   │   ├── Navbar.jsx
 │   │   └── ThemeToggle.jsx
 │   ├── contexts/
@@ -87,12 +92,14 @@ portfolio/
 │   │   ├── About.jsx
 │   │   ├── Contact.jsx
 │   │   ├── Home.jsx
+│   │   ├── NotFound.jsx
 │   │   ├── Projects.jsx
 │   │   └── ThankYou.jsx
 │   ├── App.jsx
 │   ├── index.css
 │   └── main.jsx
 ├── eslint.config.js
+├── index.html
 ├── package.json
 ├── vite.config.js
 └── README.md
@@ -102,36 +109,40 @@ portfolio/
 
 ### Theme System
 
-The portfolio features a dual-theme system with:
+The portfolio features a robust dual-theme system with:
 
-- **Dark Mode**: Purple accents with dark backgrounds
-- **Light Mode**: Blue accents with light backgrounds
-- **Auto Detection**: Respects system preference on first visit
-- **Persistence**: Theme choice saved in localStorage
+- **Dark Mode Default**: Site instantly loads in dark mode (no flash)
+- **Seamless Switching**: Real-time theme toggling with smooth transitions
+- **HTML-Level Integration**: Theme applied at document level for instant rendering
+- **Smart Persistence**: User preference automatically saved across sessions
+- **Complete Coverage**: All components, error pages, and interactive elements themed
 
 ### Color Schemes
 
-**Dark Theme:**
+**Dark Theme (Default):**
 
-- Primary: `purple-600`
-- Background: `gray-950/gray-900`
-- Text: `white/gray-300`
+- Primary: `purple-600` - Interactive elements and accents
+- Background: `gray-950/gray-900` - Main and card backgrounds
+- Text: `white/gray-300` - Primary and secondary text
+- Border: `gray-800` - Subtle separations
 
 **Light Theme:**
 
-- Primary: `blue-600`
-- Background: `white/gray-50`
-- Text: `gray-900/gray-600`
+- Primary: `blue-600` - Interactive elements and accents
+- Background: `white/gray-50` - Main and card backgrounds
+- Text: `gray-900/gray-600` - Primary and secondary text
+- Border: `gray-200` - Subtle separations
 
-### Content
+### Content Customization
 
-Update the following files to personalize the portfolio:
+Update the following files to personalize your portfolio:
 
-- `src/pages/Home.jsx` - Hero section content
-- `src/pages/About.jsx` - About me content and skills
-- `src/pages/Projects.jsx` - Project showcase
-- `src/pages/Contact.jsx` - Contact information
-- `src/assets/victor.jpg` - Profile picture
+- `src/pages/Home.jsx` - Hero section with your introduction
+- `src/pages/About.jsx` - About me content, skills, and experience
+- `src/pages/Projects.jsx` - Your project showcase with links
+- `src/pages/Contact.jsx` - Contact form and social information
+- `src/assets/victor.jpg` - Replace with your profile picture
+- `public/favicon.ico` - Your custom favicon
 
 ### Theme Integration
 
@@ -145,8 +156,10 @@ function MyComponent() {
 
   return (
     <div
-      className={`${
-        isDark ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
+      className={`transition-colors duration-300 ${
+        isDark
+          ? 'bg-gray-900 text-white border-gray-800'
+          : 'bg-white text-gray-900 border-gray-200'
       }`}
     >
       {/* Your component content */}
@@ -155,18 +168,18 @@ function MyComponent() {
 }
 ```
 
-### Projects
+### Adding Projects
 
 Add your projects to the `projects` array in `src/pages/Projects.jsx`:
 
 ```javascript
 const projects = [
   {
-    title: 'Project Name',
-    description: 'Project description',
-    tech: ['React', 'Node.js', 'MongoDB'],
-    github: 'https://github.com/username/project',
-    live: 'https://project-demo.com',
+    title: 'Your Project Name',
+    description: 'Brief description of what the project does and its purpose',
+    tech: ['React', 'TypeScript', 'Tailwind CSS'],
+    github: 'https://github.com/yourusername/project-repo',
+    live: 'https://your-project-demo.com',
     image: '/images/project-screenshot.png',
   },
 ]
@@ -176,17 +189,26 @@ const projects = [
 
 ### 🌓 Theme System
 
+- **Dark Mode Default**: Site loads in dark mode instantly with zero flash
 - **Dual Theme Support**: Seamless switching between dark and light modes
-- **Smart Detection**: Automatically detects and respects system preferences
+- **HTML-Level Integration**: Theme class set at HTML level for immediate rendering
 - **Persistent Storage**: User preferences saved across sessions
-- **Consistent Styling**: All components adapt to theme changes
+- **Consistent Styling**: All components adapt to theme changes including error pages
 
-### 🎯 Navigation
+### 🎯 Navigation & UX
 
 - **Clickable Logo**: Avatar and name navigate to home with hover effects
 - **Active States**: Clear indication of current page
 - **Mobile Responsive**: Collapsible hamburger menu for mobile devices
 - **Smooth Transitions**: Animated page transitions and hover states
+- **Error Handling**: Theme-aware 404 and error boundary pages
+
+### 🎨 Design System
+
+- **Consistent Colors**: Purple accents for dark mode, blue for light mode
+- **Professional Footer**: Branded footer with theme integration
+- **Hover Effects**: Interactive elements with scale and color transitions
+- **Typography**: Optimized text contrast for both themes
 
 ### 📱 Responsive Design
 
@@ -205,41 +227,70 @@ The portfolio is fully responsive with optimized layouts for:
 
 ## 🔧 Available Scripts
 
-- `npm run dev` - Start development server with hot reload
-- `npm run build` - Build optimized production bundle
+- `npm run dev` - Start development server with hot reload at `http://localhost:5173`
+- `npm run build` - Build optimized production bundle with Vite
 - `npm run preview` - Preview production build locally
-- `npm run lint` - Run ESLint for code quality checks
+- `npm run lint` - Run ESLint for code quality checks and formatting
 
 ## 🚀 Deployment
+
+This portfolio is optimized for modern hosting platforms with zero-configuration deployment.
 
 ### Vercel (Recommended)
 
 1. Connect your GitHub repository to Vercel
 2. Configure build settings:
-   - Build command: `npm run build`
-   - Output directory: `dist`
-   - Install command: `npm install`
+   - **Build command**: `npm run build`
+   - **Output directory**: `dist`
+   - **Install command**: `npm install`
+   - **Node.js version**: `18.x`
 3. Deploy automatically on every push to main branch
+4. Custom domain and SSL included
 
 ### Netlify
 
 1. Connect your repository to Netlify
-2. Set build settings:
-   - Build command: `npm run build`
-   - Publish directory: `dist`
-   - Node version: `18.x`
-3. Enable automatic deploys from Git
+2. Set build configuration:
+   - **Build command**: `npm run build`
+   - **Publish directory**: `dist`
+   - **Node version**: `18.x`
+3. Enable branch deploys and form handling
+4. Custom domain and CDN acceleration included
 
 ### GitHub Pages
 
-1. Install gh-pages: `npm install --save-dev gh-pages`
-2. Add deploy script to package.json:
+1. Install gh-pages dependency:
+   ```bash
+   npm install --save-dev gh-pages
+   ```
+2. Add deployment script to `package.json`:
    ```json
    "scripts": {
      "deploy": "npm run build && gh-pages -d dist"
    }
    ```
-3. Run `npm run deploy`
+3. Deploy with: `npm run deploy`
+4. Enable GitHub Pages in repository settings
+
+## 🔧 Technical Architecture
+
+### Build System
+
+- **Vite**: Modern build tool with instant HMR and optimized production builds
+- **ESLint**: Code quality and consistency enforcement
+- **React 19**: Latest React features and concurrent rendering
+
+### State Management
+
+- **Context API**: Theme state management with provider pattern
+- **localStorage**: Theme preference persistence across sessions
+- **HTML Integration**: Document-level theme application for flash prevention
+
+### Routing & Performance
+
+- **React Router DOM**: Client-side routing with lazy loading
+- **Code Splitting**: Automatic route-based bundle splitting
+- **Error Boundaries**: Graceful error handling with theme support
 
 ## 🤝 Contributing
 
