@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
+import { useTheme } from '../contexts/ThemeContext'
 
 const projects = [
   {
@@ -15,8 +16,14 @@ const projects = [
 ]
 
 function Projects() {
+  const { isDark } = useTheme()
+
   return (
-    <div className='min-h-screen bg-gray-950 text-white py-20 px-8'>
+    <div
+      className={`min-h-screen py-20 px-8 ${
+        isDark ? 'bg-gray-950 text-white' : 'bg-gray-50 text-gray-900'
+      }`}
+    >
       <motion.div
         className='max-w-6xl mx-auto'
         initial={{ opacity: 0, y: 40 }}
@@ -32,7 +39,9 @@ function Projects() {
           Featured Projects
         </motion.h1>
         <motion.p
-          className='text-gray-400 text-center mb-16 text-lg max-w-2xl mx-auto'
+          className={`text-center mb-16 text-lg max-w-2xl mx-auto ${
+            isDark ? 'text-gray-400' : 'text-gray-600'
+          }`}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
@@ -45,7 +54,11 @@ function Projects() {
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              className='bg-gray-800/50 rounded-2xl overflow-hidden shadow-2xl border border-gray-700 hover:border-purple-500/50 transition-all duration-500 group'
+              className={`rounded-2xl overflow-hidden shadow-2xl border transition-all duration-500 group ${
+                isDark
+                  ? 'bg-gray-800/50 border-gray-700 hover:border-purple-500/50'
+                  : 'bg-white border-gray-200 hover:border-blue-300 hover:shadow-xl'
+              }`}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 * index }}
@@ -57,14 +70,30 @@ function Projects() {
                   alt={`${project.title} screenshot`}
                   className='w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110'
                 />
-                <div className='absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500'></div>
+                <div
+                  className={`absolute inset-0 bg-gradient-to-t opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
+                    isDark
+                      ? 'from-gray-900/50 to-transparent'
+                      : 'from-black/30 to-transparent'
+                  }`}
+                ></div>
               </div>
 
               <div className='p-8'>
-                <h3 className='text-2xl font-bold mb-3 group-hover:text-purple-400 transition-colors duration-300'>
+                <h3
+                  className={`text-2xl font-bold mb-3 transition-colors duration-300 ${
+                    isDark
+                      ? 'group-hover:text-purple-400'
+                      : 'group-hover:text-blue-600'
+                  }`}
+                >
                   {project.title}
                 </h3>
-                <p className='text-gray-400 mb-6 leading-relaxed'>
+                <p
+                  className={`mb-6 leading-relaxed ${
+                    isDark ? 'text-gray-400' : 'text-gray-600'
+                  }`}
+                >
                   {project.description}
                 </p>
 
@@ -72,7 +101,11 @@ function Projects() {
                   {project.tech.map((tech, i) => (
                     <span
                       key={i}
-                      className='bg-purple-600/20 border border-purple-500/30 text-purple-300 text-sm px-3 py-1 rounded-full backdrop-blur-sm'
+                      className={`text-sm px-3 py-1 rounded-full backdrop-blur-sm border ${
+                        isDark
+                          ? 'bg-purple-600/20 border-purple-500/30 text-purple-300'
+                          : 'bg-blue-50 border-blue-200 text-blue-700'
+                      }`}
                     >
                       {tech}
                     </span>
@@ -84,7 +117,11 @@ function Projects() {
                     href={project.github}
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='flex items-center gap-2 text-gray-300 hover:text-purple-400 transition-all duration-300 transform hover:scale-105'
+                    className={`flex items-center gap-2 transition-all duration-300 transform hover:scale-105 ${
+                      isDark
+                        ? 'text-gray-300 hover:text-purple-400'
+                        : 'text-gray-600 hover:text-blue-600'
+                    }`}
                   >
                     <FaGithub className='text-xl' />
                     <span className='font-medium'>View Code</span>
@@ -93,7 +130,11 @@ function Projects() {
                     href={project.live}
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='flex items-center gap-2 bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-full transition-all duration-300 transform hover:scale-105'
+                    className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 transform hover:scale-105 ${
+                      isDark
+                        ? 'bg-purple-600 hover:bg-purple-700 text-white'
+                        : 'bg-blue-600 hover:bg-blue-700 text-white'
+                    }`}
                   >
                     <FaExternalLinkAlt />
                     <span className='font-medium'>Live Demo</span>
@@ -111,23 +152,41 @@ function Projects() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          <div className='bg-gray-800/30 border border-gray-700 rounded-2xl p-8'>
-            <h3 className='text-2xl font-bold mb-4 text-purple-400'>
+          <div
+            className={`border rounded-2xl p-8 ${
+              isDark
+                ? 'bg-gray-800/30 border-gray-700'
+                : 'bg-white border-gray-200 shadow-lg'
+            }`}
+          >
+            <h3
+              className={`text-2xl font-bold mb-4 ${
+                isDark ? 'text-purple-400' : 'text-blue-600'
+              }`}
+            >
               More Projects Coming Soon!
             </h3>
-            <p className='text-gray-400 mb-6'>
+            <p className={`mb-6 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
               I'm constantly working on new and exciting projects. Stay tuned
               for updates!
             </p>
             <div className='flex justify-center'>
               <div className='flex space-x-2'>
-                <div className='w-3 h-3 bg-purple-500 rounded-full animate-bounce'></div>
                 <div
-                  className='w-3 h-3 bg-purple-500 rounded-full animate-bounce'
+                  className={`w-3 h-3 rounded-full animate-bounce ${
+                    isDark ? 'bg-purple-500' : 'bg-blue-500'
+                  }`}
+                ></div>
+                <div
+                  className={`w-3 h-3 rounded-full animate-bounce ${
+                    isDark ? 'bg-purple-500' : 'bg-blue-500'
+                  }`}
                   style={{ animationDelay: '0.1s' }}
                 ></div>
                 <div
-                  className='w-3 h-3 bg-purple-500 rounded-full animate-bounce'
+                  className={`w-3 h-3 rounded-full animate-bounce ${
+                    isDark ? 'bg-purple-500' : 'bg-blue-500'
+                  }`}
                   style={{ animationDelay: '0.2s' }}
                 ></div>
               </div>

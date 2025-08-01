@@ -1,55 +1,101 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { FaCheckCircle, FaHome, FaEnvelope } from 'react-icons/fa'
+import { useTheme } from '../contexts/ThemeContext'
 
 const ThankYou = () => {
+  const { isDark } = useTheme()
+
   return (
-    <div className='min-h-screen flex items-center justify-center px-8'>
-      <motion.div
-        className='text-center max-w-md mx-auto'
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6 }}
-      >
+    <div
+      className={`min-h-screen pt-20 ${
+        isDark ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
+      }`}
+    >
+      <div className='container mx-auto px-4 py-16 text-center'>
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className='mb-8'
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{
+            type: 'spring',
+            stiffness: 260,
+            damping: 20,
+            delay: 0.2,
+          }}
+          className={`inline-block text-6xl md:text-8xl mb-8 ${
+            isDark ? 'text-green-400' : 'text-green-500'
+          }`}
         >
-          <FaCheckCircle className='text-6xl text-green-500 mx-auto mb-6' />
-          <h1 className='text-4xl font-bold text-green-400 mb-4'>Thank You!</h1>
-          <p className='text-lg text-gray-300 mb-2'>
-            Your message has been sent successfully 🎉
-          </p>
-          <p className='text-gray-400'>
-            I'll get back to you as soon as possible.
-          </p>
+          <FaCheckCircle />
         </motion.div>
 
-        <motion.div
-          className='space-y-4'
-          initial={{ opacity: 0, y: 20 }}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ delay: 0.4 }}
+          className='text-4xl md:text-6xl font-bold mb-6'
+        >
+          Thank You!
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          className={`text-lg md:text-xl mb-12 max-w-2xl mx-auto ${
+            isDark ? 'text-gray-300' : 'text-gray-600'
+          }`}
+        >
+          Your message has been sent successfully! I appreciate you taking the
+          time to reach out. I'll get back to you as soon as possible.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8 }}
+          className='flex flex-col sm:flex-row gap-4 justify-center items-center'
         >
           <Link
             to='/'
-            className='flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105'
+            className={`inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
+              isDark
+                ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                : 'bg-blue-500 hover:bg-blue-600 text-white'
+            } hover:scale-105 shadow-lg hover:shadow-xl`}
           >
             <FaHome />
             Back to Home
           </Link>
 
-          <a
-            href='mailto:victormaoya@gmail.com'
-            className='flex items-center justify-center gap-2 border border-purple-600 hover:bg-purple-800 px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105'
+          <Link
+            to='/contact'
+            className={`inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
+              isDark
+                ? 'border border-gray-600 text-gray-300 hover:bg-gray-700'
+                : 'border border-gray-300 text-gray-700 hover:bg-gray-50'
+            } hover:scale-105 shadow-lg hover:shadow-xl`}
           >
             <FaEnvelope />
             Send Another Message
-          </a>
+          </Link>
         </motion.div>
-      </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2 }}
+          className={`mt-16 pt-8 border-t ${
+            isDark ? 'border-gray-700' : 'border-gray-200'
+          }`}
+        >
+          <p
+            className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}
+          >
+            Expected response time: 24-48 hours
+          </p>
+        </motion.div>
+      </div>
     </div>
   )
 }

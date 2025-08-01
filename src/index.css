@@ -1,11 +1,29 @@
 @import 'tailwindcss';
 
+/* Root variables for theme colors */
+:root {
+  --primary: #a855f7;
+  --primary-dark: #7c3aed;
+  --background-light: #f9fafb;
+  --background-dark: #030712;
+  --surface-light: #ffffff;
+  --surface-dark: #1f2937;
+  --text-light: #111827;
+  --text-dark: #f9fafb;
+  --text-muted-light: #6b7280;
+  --text-muted-dark: #9ca3af;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
+  background: var(--surface-dark);
+}
+
+.dark ::-webkit-scrollbar-track {
   background: #1f2937;
 }
 
@@ -15,7 +33,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #9333ea;
+  background: var(--primary);
 }
 
 /* Smooth scrolling */
@@ -23,10 +41,22 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Light mode scrollbar */
+.light ::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+}
+
+.light ::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
 /* Custom animations */
 @keyframes float {
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(0px);
   }
   50% {
@@ -43,14 +73,13 @@ button:focus-visible,
 a:focus-visible,
 input:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid #a855f7;
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
 /* Loading animation */
 @keyframes pulse {
-  0%,
-  100% {
+  0%, 100% {
     opacity: 1;
   }
   50% {
@@ -78,4 +107,19 @@ textarea:focus-visible {
 .animate-gradient {
   background-size: 200% 200%;
   animation: gradient 3s ease infinite;
+}
+
+/* Theme transition */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Light mode specific styles */
+.light {
+  color-scheme: light;
+}
+
+/* Dark mode specific styles */
+.dark {
+  color-scheme: dark;
 }
