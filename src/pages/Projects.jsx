@@ -11,7 +11,16 @@ const projects = [
     github: 'https://github.com/victormaoya/notes-app',
     live: 'https://shisha-frontend.vercel.app/',
     image: '/images/notes-app-a.png',
-  },
+  }, 
+  {
+    title: 'eCommerce App',
+    description:
+      'An elegant, fully responsive eCommerce platform built with Next.js, TailwindCSS, and PostgreSQL. Designed for speed, scalability, and seamless user journeys — from product discovery to secure checkout.',
+    tech: ['Next.js', 'TailwindCSS', 'PostgreSQL', 'Prisma'],
+    github: 'https://github.com/victormaoya/eroica',
+    live: 'https://eroica.vercel.app/',
+    image: '/images/Eroica.png',
+  }
   // You can add more projects here later
 ]
 
