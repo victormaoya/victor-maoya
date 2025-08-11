@@ -20,6 +20,14 @@ const projects = [
     github: 'https://github.com/victormaoya/eroica',
     live: 'https://eroica.vercel.app/',
     image: '/images/Eroica.png',
+  },
+  {
+    title: 'Valkyrie | Analytics Dashboard',
+    description: 'Command your data with precision, speed, and power.',
+    tech: ['Nextjs', 'TailwindCSS'],
+    github: 'https://github.com/victormaoya/valkyrie',
+    live: 'https://valkyries.vercel.app/',
+    image: '/images/Valkyrie.png',
   }
   // You can add more projects here later
 ]
